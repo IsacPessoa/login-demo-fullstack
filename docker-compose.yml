@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: auth_postgres
+    environment:
+      POSTGRES_DB: authdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend/authdemo
+    container_name: auth_backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/authdb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin123
+      JWT_SECRET: "Jv9K7xDkFQZpM2eWcR4B6n8yS0A1LhTUmC5GfXrOaPqE"
+      JWT_EXPIRATION_MS: 3600000
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend/frontend-authdemo
+    container_name: auth_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
