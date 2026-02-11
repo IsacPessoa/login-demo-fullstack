@@ -7,7 +7,7 @@ type Props = {
 
 export default function AuthLayout({ left, children }: Props) {
     return (
-        <div className="relative min-h-screen bg-zinc-950 text-zinc-100 overflow-hidden">
+        <div className="relative mx-auto flex min-h-screen bg-zinc-950 text-zinc-100 overflow-hidden">
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-3xl" />
                 <div className="absolute bottom-[-140px] right-[-140px] h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-3xl" />

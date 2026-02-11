@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
 #root {
     width: 100%;
     margin: 0;
@@ -18,11 +20,9 @@ a:hover {
 }
 
 body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    min-height: 100dvh;
+    background: #09090b;
+    overflow-x: hidden;
 }
 
 h1 {
